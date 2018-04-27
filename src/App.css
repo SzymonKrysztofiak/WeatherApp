@@ -1,0 +1,23 @@
+body {
+    box-sizing: border-box;
+    background-color: ivory;
+}
+
+.main {
+    margin-top: 10vh;
+}
+
+form {
+    margin-top: 20px;
+    padding: 0 15px 20px 15px;
+    background-color: salmon;
+    border-radius: 5px;
+}
+
+label {
+    margin-top: 15px;
+}
+
+button {
+    margin-top: 20px;
+}
