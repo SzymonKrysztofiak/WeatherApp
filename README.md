@@ -5,4 +5,4 @@ Used:
 - bootstrap 3
 - openweathermap API
 
-LIVE: https://szymonkrysztofiak.github.io/weatherapp
+LIVE: https://szymonkrysztofiak.github.io/WeatherApp
