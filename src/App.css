@@ -3,21 +3,37 @@ body {
     background-color: ivory;
 }
 
-.main {
+.app-wrapper {
     margin-top: 10vh;
 }
 
-form {
+.title-container__description {
+    font-size: 1.2em;
+}
+
+.form-group {
     margin-top: 20px;
     padding: 0 15px 20px 15px;
     background-color: salmon;
     border-radius: 5px;
 }
 
-label {
+.form-label {
     margin-top: 15px;
 }
 
-button {
+.form-button {
     margin-top: 20px;
+}
+
+.results-container {
+    margin-top: 20px;
+    padding: 0 20px;
+    border-radius: 5px;
+}
+
+.results-icon {
+    position: absolute;
+    margin-top: -14px;
+    margin-left: -3px;
 }

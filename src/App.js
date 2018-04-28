@@ -9,6 +9,7 @@ const API_KEY = "dbcd93b4e2fe2814afa13caac19f0cc5";
 class App extends React.Component {
 
     state = {
+        icon: undefined,
         temperature: undefined,
         city: undefined,
         country: undefined,
@@ -25,6 +26,7 @@ class App extends React.Component {
         if(city && country) {
             console.log(data);
             this.setState({
+                icon: data.weather[0].icon,
                 temperature: data.main.temp,
                 city: data.name,
                 country: data.sys.country,
@@ -33,6 +35,7 @@ class App extends React.Component {
             });
         } else {
             this.setState({
+                icon: undefined,
                 temperature: undefined,
                 city: undefined,
                 country: undefined,
@@ -40,24 +43,30 @@ class App extends React.Component {
                 error: "Please enter the values."
             });
         }
+        console.log(this.getWeather);
     }
     render() {
         return (
-            <main className="main">
-                <div className="container">
-                    <div className="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+            <div className="container">
+                <div className="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                    <div className="app-wrapper">
                         <Titles />
-                        <Form getWeather={this.getWeather} />
-                        <Weather 
-                            temperature={this.state.temperature} 
-                            city={this.state.city} 
-                            country={this.state.country} 
-                            description={this.state.description} 
-                            error={this.state.error} 
-                        />
+                            <main className="main">
+                            <section className="form-container">
+                                <Form getWeather={this.getWeather} />
+                                <Weather 
+                                    icon={this.state.icon}
+                                    temperature={this.state.temperature} 
+                                    city={this.state.city} 
+                                    country={this.state.country} 
+                                    description={this.state.description} 
+                                    error={this.state.error} 
+                                />
+                            </section>
+                        </main>
                     </div>
                 </div>
-            </main>
+            </div>
         );
     }
 };
