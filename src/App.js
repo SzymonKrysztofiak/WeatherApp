@@ -21,27 +21,31 @@ class App extends React.Component {
         this.setState({
             coordis
         });
+        console.log(this.state.coordis);
         this.getWeather();
     };
 
-    getWeather = async () => {
-        const lat = this.state.coordis.coords.lat;
-        const lng = this.state.coordis.coords.lng;
-        const api_call = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${
+    getWeather = () => {
+        fetch(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${
+                this.state.coordis.coords.lat
+            }&lon=${this.state.coordis.coords.lng}&appid=${
                 api.key
             }&units=metric`
-        );
-        const data = await api_call.json();
-        console.log(data);
-        this.setState({
-            icon: data.weather[0].icon,
-            temperature: data.main.temp,
-            city: data.name,
-            country: data.sys.country,
-            description: data.weather[0].description,
-            error: ""
-        });
+        )
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                this.setState({
+                    icon: data.weather[0].icon,
+                    temperature: data.main.temp,
+                    city: data.name,
+                    country: data.sys.country,
+                    description: data.weather[0].description,
+                    error: ""
+                });
+            });
     };
 
     render() {

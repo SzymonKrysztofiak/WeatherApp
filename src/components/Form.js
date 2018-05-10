@@ -6,7 +6,9 @@ class Form extends React.Component {
 
     getGeoCoords = () => {
         navigator.geolocation.getCurrentPosition(this.geoSuccess, () => {
-            console.log("Nie działa");
+            console.log(
+                "Nie działa geo, bo masz kuffa wyłączone, albo przeglądarke z ery potato"
+            );
         });
     };
 
@@ -15,7 +17,7 @@ class Form extends React.Component {
             lat: position.coords.latitude,
             lng: position.coords.longitude
         };
-        console.log(coords);
+        // console.log(coords);
         this.props.addCoordsToState(coords);
     };
 
@@ -32,10 +34,12 @@ class Form extends React.Component {
                 lat: city.lat,
                 lng: city.lng
             };
-            console.log(coords);
             this.props.addCoordsToState(coords);
+            // console.log(coords.lat);
         } else {
-            console.log(`Pisz kurwa jak człowiek, poprawnie...`);
+            console.log(
+                `Napisz ładnie jak człowiek, poprawnie... z wielkiej litery itd.`
+            );
         }
     };
 
