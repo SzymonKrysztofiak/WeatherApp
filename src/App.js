@@ -21,12 +21,9 @@ class App extends React.Component {
         this.setState({
             coordis
         });
-        console.log(this.state.coordis);
+        // console.log(this.state.coordis);
         this.updateState();
     };
-
-    getWeather = () => {};
-    // this.getWeather();
 
     updateState = () => {
         fetch(
