@@ -21,7 +21,7 @@ class Form extends React.Component {
         this.props.addCoordsToState(coords);
     };
 
-    getCoords = event => {
+    getCoords = async event => {
         event.preventDefault();
         console.log(this.cityRef.current.value);
         const city = cities.find(element => {
@@ -29,17 +29,17 @@ class Form extends React.Component {
         });
         if (this.cityRef.current.value === "") {
             this.getGeoCoords();
-        } else if (city) {
-            const coords = {
+        } else if (!city) {
+            console.log(
+                `Napisz ładnie jak człowiek, poprawnie... z wielkiej litery itd.`
+            );
+            // console.log(coords.lat);
+        } else {
+            const coords = await {
                 lat: city.lat,
                 lng: city.lng
             };
             this.props.addCoordsToState(coords);
-            // console.log(coords.lat);
-        } else {
-            console.log(
-                `Napisz ładnie jak człowiek, poprawnie... z wielkiej litery itd.`
-            );
         }
     };
 

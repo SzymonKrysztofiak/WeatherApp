@@ -22,10 +22,13 @@ class App extends React.Component {
             coordis
         });
         console.log(this.state.coordis);
-        this.getWeather();
+        this.updateState();
     };
 
-    getWeather = () => {
+    getWeather = () => {};
+    // this.getWeather();
+
+    updateState = () => {
         fetch(
             `https://api.openweathermap.org/data/2.5/weather?lat=${
                 this.state.coordis.coords.lat
