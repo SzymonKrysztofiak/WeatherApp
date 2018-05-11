@@ -35,7 +35,7 @@ class Form extends React.Component {
             // console.log(api_call);
             const data = await api_call.json();
             // console.log(data);
-            const coords = {
+            const coords = await {
                 lat: data.results[0].geometry.location.lat,
                 lng: data.results[0].geometry.location.lng
             };
