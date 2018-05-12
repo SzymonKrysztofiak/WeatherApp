@@ -1,13 +1,16 @@
 import React from "react";
+import moment from "moment";
+
 import Titles from "./components/Titles";
 import Form from "./components/Form";
 import Weather from "./components/Weather";
+import Footer from "./components/Footer";
 import api from "./api";
 
 class App extends React.Component {
     state = {
         coordis: {},
-        icon: undefined,
+        date: undefined,
         temperature: undefined,
         city: undefined,
         country: undefined,
@@ -37,9 +40,10 @@ class App extends React.Component {
                 return res.json();
             })
             .then(data => {
+                const newDate = moment(data.dt * 1000).format("l LT");
                 this.setState({
-                    icon: data.weather[0].icon,
                     temperature: data.main.temp,
+                    date: newDate,
                     city: data.name,
                     country: data.sys.country,
                     description: data.weather[0].description,
@@ -50,26 +54,20 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className="container">
-                <div className="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-                    <div className="app-wrapper">
-                        <Titles />
-                        <main className="main">
-                            <section className="form-container">
-                                <Form
-                                    addCoordsToState={this.addCoordsToState}
-                                />
-                                <Weather
-                                    icon={this.state.icon}
-                                    temperature={this.state.temperature}
-                                    city={this.state.city}
-                                    country={this.state.country}
-                                    description={this.state.description}
-                                    error={this.state.error}
-                                />
-                            </section>
-                        </main>
-                    </div>
+            <div>
+                <div className="bg-container" />
+                <div className="flex-container">
+                    <Titles />
+                    <Form addCoordsToState={this.addCoordsToState} />
+                    <Weather
+                        temperature={this.state.temperature}
+                        date={this.state.date}
+                        city={this.state.city}
+                        country={this.state.country}
+                        description={this.state.description}
+                        error={this.state.error}
+                    />
+                    <Footer />
                 </div>
             </div>
         );

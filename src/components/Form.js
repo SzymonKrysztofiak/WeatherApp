@@ -46,19 +46,15 @@ class Form extends React.Component {
 
     render() {
         return (
-            <form className="form-group" onSubmit={this.getCoords}>
-                <label className="form-label" htmlFor="city">
-                    City
-                </label>
+            <form className="form" onSubmit={this.getCoords}>
                 <input
-                    className="form-control"
-                    id="city"
+                    className="form-input"
                     type="text"
                     name="city"
                     ref={this.cityRef}
-                    placeholder="Enter a city name... e.g. London"
+                    placeholder="London, Paris, Poznan..."
                 />
-                <button className="btn btn-primary form-button">Check</button>
+                <button className="form-button">Check</button>
             </form>
         );
     }
