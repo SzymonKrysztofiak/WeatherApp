@@ -15,7 +15,7 @@ class App extends React.Component {
         city: undefined,
         country: undefined,
         description: undefined,
-        error: undefined
+        errorMessage: ""
     };
 
     addCoordsToState = coords => {
@@ -24,11 +24,24 @@ class App extends React.Component {
         this.setState({
             coordis
         });
-        // console.log(this.state.coordis);
-        this.updateState();
+        this.updateWeatherState();
     };
 
-    updateState = () => {
+    addError = error => {
+        const errorMessage = { ...this.state.errorMessage };
+        errorMessage["error"] = error;
+        this.setState({
+            coordis: {},
+            date: undefined,
+            temperature: undefined,
+            city: undefined,
+            country: undefined,
+            description: undefined,
+            errorMessage: errorMessage
+        });
+    };
+
+    updateWeatherState = () => {
         fetch(
             `https://api.openweathermap.org/data/2.5/weather?lat=${
                 this.state.coordis.coords.lat
@@ -47,7 +60,7 @@ class App extends React.Component {
                     city: data.name,
                     country: data.sys.country,
                     description: data.weather[0].description,
-                    error: ""
+                    errorMessage: ""
                 });
             });
     };
@@ -58,14 +71,17 @@ class App extends React.Component {
                 <div className="bg-container" />
                 <div className="flex-container">
                     <Titles />
-                    <Form addCoordsToState={this.addCoordsToState} />
+                    <Form
+                        addCoordsToState={this.addCoordsToState}
+                        addError={this.addError}
+                    />
                     <Weather
                         temperature={this.state.temperature}
                         date={this.state.date}
                         city={this.state.city}
                         country={this.state.country}
                         description={this.state.description}
-                        error={this.state.error}
+                        errorMessage={this.state.errorMessage.error}
                     />
                     <Footer />
                 </div>

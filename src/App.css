@@ -100,6 +100,7 @@ body {
     font-weight: 700;
     font-size: 20px;
     padding: 0;
+    cursor: pointer;
 }
 
 ::-webkit-input-placeholder {
@@ -131,10 +132,18 @@ body {
     margin: 0 20px;
 }
 
-.results-container__rest > p {
+.results-container__rest > p,
+.result-container__error > p {
     font-size: 20px;
     margin: 0 20px;
     line-height: 34px;
+}
+
+.result-container__error > p {
+    max-width: 500px;
+    width: 100%;
+    margin: 0;
+    text-align: center;
 }
 
 /* FOOTER */

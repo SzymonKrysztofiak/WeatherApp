@@ -5,11 +5,15 @@ class Form extends React.Component {
     cityRef = React.createRef();
 
     getGeoCoords = () => {
-        navigator.geolocation.getCurrentPosition(this.geoSuccess, () => {
-            console.log(
-                "Nie działa geo, bo masz kuffa wyłączone, albo przeglądarke z ery potato"
+        if (!navigator.geolocation) {
+            const error = "Your browser doesn't support geolocation :(";
+            this.props.addError(error);
+        } else {
+            navigator.geolocation.getCurrentPosition(
+                this.geoSuccess,
+                this.geoError
             );
-        });
+        }
     };
 
     geoSuccess = position => {
@@ -17,13 +21,16 @@ class Form extends React.Component {
             lat: position.coords.latitude,
             lng: position.coords.longitude
         };
-        // console.log(coords);
         this.props.addCoordsToState(coords);
+    };
+
+    geoError = () => {
+        const error = `For some reason we can't read your location :( Check your geolocation settings, or network access.`;
+        this.props.addError(error);
     };
 
     getCoords = async event => {
         event.preventDefault();
-        // console.log(this.cityRef.current.value);
         if (this.cityRef.current.value === "") {
             this.getGeoCoords();
         } else {
@@ -32,15 +39,17 @@ class Form extends React.Component {
                     this.cityRef.current.value
                 }&key=${api.goog_key}`
             );
-            // console.log(api_call);
             const data = await api_call.json();
-            // console.log(data);
-            const coords = await {
-                lat: data.results[0].geometry.location.lat,
-                lng: data.results[0].geometry.location.lng
-            };
-            // console.log(coords);
-            this.props.addCoordsToState(coords);
+            if (data.status === "ZERO_RESULTS") {
+                const error = "We don't have any data for this name :(";
+                this.props.addError(error);
+            } else {
+                const coords = await {
+                    lat: data.results[0].geometry.location.lat,
+                    lng: data.results[0].geometry.location.lng
+                };
+                this.props.addCoordsToState(coords);
+            }
         }
     };
 

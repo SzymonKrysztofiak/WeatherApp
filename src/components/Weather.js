@@ -25,9 +25,11 @@ const Weather = props => (
                     {props.description}
                 </p>
             )}
-            {props.error && (
+        </div>
+        <div className="result-container__error">
+            {props.errorMessage && (
                 <p>
-                    <strong>{props.error}</strong>
+                    <strong>{props.errorMessage}</strong>
                 </p>
             )}
         </div>
