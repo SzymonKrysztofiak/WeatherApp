@@ -31,6 +31,7 @@ class Form extends React.Component {
 
     getCoords = async event => {
         event.preventDefault();
+        this.props.showLoader();
         if (this.cityRef.current.value === "") {
             this.getGeoCoords();
         } else {

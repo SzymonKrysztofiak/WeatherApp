@@ -15,7 +15,8 @@ class App extends React.Component {
         city: undefined,
         country: undefined,
         description: undefined,
-        errorMessage: ""
+        errorMessage: "",
+        isLoaded: true
     };
 
     addCoordsToState = coords => {
@@ -25,6 +26,18 @@ class App extends React.Component {
             coordis
         });
         this.updateWeatherState();
+    };
+
+    showLoader = () => {
+        this.setState({
+            isLoaded: false
+        });
+    };
+
+    hideLoader = () => {
+        this.setState({
+            isLoaded: true
+        });
     };
 
     addError = error => {
@@ -39,6 +52,7 @@ class App extends React.Component {
             description: undefined,
             errorMessage: errorMessage
         });
+        this.hideLoader();
     };
 
     updateWeatherState = () => {
@@ -63,17 +77,19 @@ class App extends React.Component {
                     errorMessage: ""
                 });
             });
+        this.hideLoader();
     };
 
     render() {
         return (
-            <div>
+            <React.Fragment>
                 <div className="bg-container" />
                 <div className="flex-container">
                     <Titles />
                     <Form
                         addCoordsToState={this.addCoordsToState}
                         addError={this.addError}
+                        showLoader={this.showLoader}
                     />
                     <Weather
                         temperature={this.state.temperature}
@@ -82,10 +98,11 @@ class App extends React.Component {
                         country={this.state.country}
                         description={this.state.description}
                         errorMessage={this.state.errorMessage.error}
+                        isLoaded={this.state.isLoaded}
                     />
                     <Footer />
                 </div>
-            </div>
+            </React.Fragment>
         );
     }
 }

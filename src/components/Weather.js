@@ -2,6 +2,7 @@ import React from "react";
 
 const Weather = props => (
     <div className="results-container">
+        {props.isLoaded ? null : <div className="loader" />}
         <div className="results-container__temp">
             {props.temperature && <p>{props.temperature}&deg;C</p>}
         </div>

@@ -157,6 +157,24 @@ body {
     color: rgb(255, 255, 255);
 }
 
+/* LOADER */
+
+.loader {
+    background: url("./img/cog.png");
+    width: 39px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 /* MEDIA */
 
 @media (max-width: 600px) {
