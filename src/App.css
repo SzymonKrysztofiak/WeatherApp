@@ -149,12 +149,12 @@ body {
     text-align: center;
 }
 
-.results-container__button {
+.result-container__button {
     text-transform: none;
     font-weight: 300;
     height: 30px;
     width: 100%;
-    margin: 5px 0 0 20px;
+    margin: 5px 0 0 0;
     display: block;
 }
 
