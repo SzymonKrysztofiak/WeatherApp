@@ -29,14 +29,7 @@ class App extends React.Component {
     };
 
     toggleLoader = () => {
-        if (this.state.isLoaded === true) {
-            this.setState({
-                isLoaded: false
-            });
-        }
-        this.setState({
-            isLoaded: true
-        });
+        this.setState(state => ({ isLoaded: !state.isLoaded }));
     };
 
     addError = error => {
@@ -88,7 +81,7 @@ class App extends React.Component {
                     <Form
                         addCoordsToState={this.addCoordsToState}
                         addError={this.addError}
-                        toggleLoader={this.showLoader}
+                        toggleLoader={this.toggleLoader}
                     />
                     <Weather
                         temperature={this.state.temperature}
