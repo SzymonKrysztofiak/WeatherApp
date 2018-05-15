@@ -28,13 +28,12 @@ class App extends React.Component {
         this.updateWeatherState();
     };
 
-    showLoader = () => {
-        this.setState({
-            isLoaded: false
-        });
-    };
-
-    hideLoader = () => {
+    toggleLoader = () => {
+        if (this.state.isLoaded === true) {
+            this.setState({
+                isLoaded: false
+            });
+        }
         this.setState({
             isLoaded: true
         });
@@ -52,7 +51,7 @@ class App extends React.Component {
             description: undefined,
             errorMessage: errorMessage
         });
-        this.hideLoader();
+        this.toggleLoader();
     };
 
     updateWeatherState = () => {
@@ -77,7 +76,7 @@ class App extends React.Component {
                     errorMessage: ""
                 });
             });
-        this.hideLoader();
+        this.toggleLoader();
     };
 
     render() {
@@ -89,7 +88,7 @@ class App extends React.Component {
                     <Form
                         addCoordsToState={this.addCoordsToState}
                         addError={this.addError}
-                        showLoader={this.showLoader}
+                        toggleLoader={this.showLoader}
                     />
                     <Weather
                         temperature={this.state.temperature}
