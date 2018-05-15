@@ -64,7 +64,7 @@ class Form extends React.Component {
                     ref={this.cityRef}
                     placeholder="London, Paris, Poznan..."
                 />
-                <button className="form-button">Check</button>
+                <button className="button form-button">Check</button>
             </form>
         );
     }

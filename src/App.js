@@ -17,6 +17,7 @@ class App extends React.Component {
             country: undefined,
             description: undefined
         },
+        forecast: {},
         errorMessage: "",
         isLoaded: true
     };
@@ -78,6 +79,31 @@ class App extends React.Component {
         this.toggleLoader();
     };
 
+    updateForecastState = () => {
+        fetch(
+            `https://api.openweathermap.org/data/2.5/forecast?lat=${
+                this.state.coordis.coords.lat
+            }&lon=${this.state.coordis.coords.lng}&appid=${
+                api.key
+            }&units=metric`
+        )
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                console.log(data)
+                
+                this.setState({
+                    forecast: data.list.map( (x) => {
+                        return { temperature: x.main.temp,
+                                date: moment(x.dt * 1000).format("l LT"),
+                                description: x.weather[0].description
+                        }
+                    })
+                });
+            });
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -97,6 +123,7 @@ class App extends React.Component {
                         description={this.state.current.description}
                         errorMessage={this.state.errorMessage.error}
                         isLoaded={this.state.isLoaded}
+                        updateForecastState={this.updateForecastState}
                     />
                     <Footer />
                 </div>

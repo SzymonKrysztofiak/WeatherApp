@@ -90,9 +90,7 @@ body {
     font-size: 18px;
 }
 
-.form-button {
-    height: 60px;
-    width: 180px;
+.button {
     background-color: rgba(255, 255, 255, 0.2);
     border: none;
     color: rgb(255, 255, 255);
@@ -101,6 +99,11 @@ body {
     font-size: 20px;
     padding: 0;
     cursor: pointer;
+}
+
+.form-button {
+    height: 60px;
+    width: 180px;
 }
 
 ::-webkit-input-placeholder {
@@ -144,6 +147,15 @@ body {
     width: 100%;
     margin: 0;
     text-align: center;
+}
+
+.results-container__button {
+    text-transform: none;
+    font-weight: 300;
+    height: 30px;
+    width: 100%;
+    margin: 5px 0 0 20px;
+    display: block;
 }
 
 /* FOOTER */
