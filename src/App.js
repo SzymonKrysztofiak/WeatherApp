@@ -10,11 +10,13 @@ import api from "./api";
 class App extends React.Component {
     state = {
         coordis: {},
-        date: undefined,
-        temperature: undefined,
-        city: undefined,
-        country: undefined,
-        description: undefined,
+        current: {
+            date: undefined,
+            temperature: undefined,
+            city: undefined,
+            country: undefined,
+            description: undefined
+        },
         errorMessage: "",
         isLoaded: true
     };
@@ -37,11 +39,13 @@ class App extends React.Component {
         errorMessage["error"] = error;
         this.setState({
             coordis: {},
-            date: undefined,
-            temperature: undefined,
-            city: undefined,
-            country: undefined,
-            description: undefined,
+            current: {
+                date: undefined,
+                temperature: undefined,
+                city: undefined,
+                country: undefined,
+                description: undefined
+            },
             errorMessage: errorMessage
         });
         this.toggleLoader();
@@ -61,11 +65,13 @@ class App extends React.Component {
             .then(data => {
                 const newDate = moment(data.dt * 1000).format("l LT");
                 this.setState({
-                    temperature: data.main.temp,
-                    date: newDate,
-                    city: data.name,
-                    country: data.sys.country,
-                    description: data.weather[0].description,
+                    current: {
+                        temperature: data.main.temp,
+                        date: newDate,
+                        city: data.name,
+                        country: data.sys.country,
+                        description: data.weather[0].description
+                    },
                     errorMessage: ""
                 });
             });
@@ -84,11 +90,11 @@ class App extends React.Component {
                         toggleLoader={this.toggleLoader}
                     />
                     <Weather
-                        temperature={this.state.temperature}
-                        date={this.state.date}
-                        city={this.state.city}
-                        country={this.state.country}
-                        description={this.state.description}
+                        temperature={this.state.current.temperature}
+                        date={this.state.current.date}
+                        city={this.state.current.city}
+                        country={this.state.current.country}
+                        description={this.state.current.description}
                         errorMessage={this.state.errorMessage.error}
                         isLoaded={this.state.isLoaded}
                     />
