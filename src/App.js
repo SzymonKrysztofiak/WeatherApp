@@ -16,6 +16,7 @@ class App extends React.Component {
             country: undefined,
             description: undefined
         },
+        forecast: {},
         errorMessage: "",
         isLoaded: true
     };
@@ -27,6 +28,7 @@ class App extends React.Component {
             coordis
         });
         this.updateWeatherState();
+        this.forecastState();
     };
 
     toggleLoader = () => {
@@ -75,6 +77,32 @@ class App extends React.Component {
                 });
             });
         this.toggleLoader();
+    };
+
+    // Nowy bajer do opierdolenia
+    forecastState = () => {
+        fetch(
+            `https://api.openweathermap.org/data/2.5/forecast?lat=${
+                this.state.coordis.coords.lat
+            }&lon=${this.state.coordis.coords.lng}&appid=${
+                api.key
+            }&units=metric`
+        )
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                console.log(data.list);
+                this.setState({
+                    forecast: data.list.map(x => {
+                        return {
+                            temperature: x.main.temp,
+                            date: moment(x.dt * 1000).format("l LT"),
+                            description: x.weather[0].description
+                        };
+                    })
+                });
+            });
     };
 
     render() {
