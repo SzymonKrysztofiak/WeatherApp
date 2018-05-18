@@ -16,7 +16,7 @@ class App extends React.Component {
             country: undefined,
             description: undefined
         },
-        forecast: {},
+        forecast: [],
         errorMessage: "",
         isLoaded: true
     };
@@ -92,7 +92,6 @@ class App extends React.Component {
                 return res.json();
             })
             .then(data => {
-                console.log(data.list);
                 this.setState({
                     forecast: data.list.map(x => {
                         return {
@@ -124,6 +123,7 @@ class App extends React.Component {
                         description={this.state.current.description}
                         errorMessage={this.state.errorMessage.error}
                         isLoaded={this.state.isLoaded}
+                        forecast={this.state.forecast}
                     />
                     <Footer />
                 </div>
