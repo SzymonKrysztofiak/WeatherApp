@@ -158,6 +158,28 @@ body {
     display: block;
 }
 
+/* LIST */
+
+ul.list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px rgb(255, 255, 255) dashed;
+}
+
+.list-item > div {
+    margin-right: 20px;
+}
+
+.list-item:last-child {
+    margin-right: 0;
+}
+
 /* FOOTER */
 
 .footer-description {
@@ -252,5 +274,13 @@ body {
         height: 21px;
         margin-left: -36px;
         margin-top: 8px;
+    }
+    .list-item {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 10px 0;
+    }
+    .list-item p {
+        margin: 6px 0;
     }
 }

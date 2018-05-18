@@ -96,7 +96,7 @@ class App extends React.Component {
                     forecast: data.list.map(x => {
                         return {
                             temperature: x.main.temp,
-                            date: moment(x.dt * 1000).format("l LT"),
+                            date: moment(x.dt * 1000).format("LT dddd"),
                             description: x.weather[0].description
                         };
                     })
