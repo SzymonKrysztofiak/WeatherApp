@@ -12,7 +12,7 @@ class Weather extends React.Component {
         date: PropTypes.string,
         city: PropTypes.string,
         country: PropTypes.string,
-        temperature: PropTypes.string,
+        temperature: PropTypes.number,
         description: PropTypes.string,
         errorMessage: PropTypes.string,
         forecast: PropTypes.array

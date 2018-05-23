@@ -1,12 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
+import moment from "moment";
 
 const ForecastItem = props => {
     return (
         <li className="list-item">
             <div>
                 <p>
-                    <strong>{props.date}</strong>
+                    <strong>
+                        {moment(props.date * 1000).format("dddd LT")}
+                    </strong>
                 </p>
             </div>
             <div>
@@ -24,8 +27,8 @@ const ForecastItem = props => {
 };
 
 ForecastItem.propTypes = {
-    date: PropTypes.string,
-    temp: PropTypes.string,
+    date: PropTypes.number,
+    temp: PropTypes.number,
     desc: PropTypes.string
 };
 

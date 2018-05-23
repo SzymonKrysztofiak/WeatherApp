@@ -93,11 +93,12 @@ class App extends React.Component {
             })
             .then(data => {
                 this.setState({
-                    forecast: data.list.map(x => {
+                    forecast: data.list.map(item => {
                         return {
-                            temperature: x.main.temp,
-                            date: moment(x.dt * 1000).format("LT dddd"),
-                            description: x.weather[0].description
+                            temperature: item.main.temp,
+                            date: item.dt,
+                            day: moment(item.dt * 1000).format("dddd"),
+                            description: item.weather[0].description
                         };
                     })
                 });

@@ -8,7 +8,7 @@ const CurrentTemp = props => (
 );
 
 CurrentTemp.propTypes = {
-    temperature: PropTypes.string
+    temperature: PropTypes.number
 };
 
 export default CurrentTemp;
