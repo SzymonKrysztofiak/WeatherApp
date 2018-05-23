@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const ForecastItem = props => {
     return (
@@ -20,6 +21,12 @@ const ForecastItem = props => {
             </div>
         </li>
     );
+};
+
+ForecastItem.propTypes = {
+    date: PropTypes.string,
+    temp: PropTypes.string,
+    desc: PropTypes.string
 };
 
 export default ForecastItem;

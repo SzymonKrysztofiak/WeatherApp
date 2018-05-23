@@ -1,5 +1,6 @@
 import React from "react";
 import ForecastItem from "./ForecastItem";
+import PropTypes from "prop-types";
 
 const Forecast = props => {
     return (
@@ -14,6 +15,10 @@ const Forecast = props => {
             ))}
         </ul>
     );
+};
+
+Forecast.propTypes = {
+    forecast: PropTypes.array
 };
 
 export default Forecast;

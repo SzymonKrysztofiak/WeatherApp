@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Loader from "./Loader";
 import Error from "./Error";
 import Results from "./Results";
@@ -6,6 +7,16 @@ import CurrentTemp from "./CurrentTemp";
 import Forecast from "./Forecast";
 
 class Weather extends React.Component {
+    static propTypes = {
+        isLoaded: PropTypes.bool,
+        date: PropTypes.string,
+        city: PropTypes.string,
+        country: PropTypes.string,
+        temperature: PropTypes.string,
+        description: PropTypes.string,
+        errorMessage: PropTypes.string,
+        forecast: PropTypes.array
+    };
     render() {
         return (
             <div>

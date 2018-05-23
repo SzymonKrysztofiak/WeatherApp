@@ -1,8 +1,15 @@
 import React from "react";
 import api from "../api";
+import PropTypes from "prop-types";
 
 class Form extends React.Component {
     cityRef = React.createRef();
+
+    static propTypes = {
+        addError: PropTypes.func,
+        addCoordsToState: PropTypes.func,
+        toggleLoader: PropTypes.func
+    };
 
     getGeoCoords = () => {
         if (!navigator.geolocation) {

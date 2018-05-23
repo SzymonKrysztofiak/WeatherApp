@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Results = props => (
     <div className="results-container__rest">
@@ -23,5 +24,12 @@ const Results = props => (
         )}
     </div>
 );
+
+Results.propTypes = {
+    date: PropTypes.string,
+    city: PropTypes.string,
+    country: PropTypes.string,
+    description: PropTypes.string
+};
 
 export default Results;

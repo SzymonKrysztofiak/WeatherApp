@@ -127,6 +127,7 @@ body {
     margin-top: 40px;
     flex-wrap: wrap;
     margin-bottom: 30px;
+    justify-content: center;
 }
 
 .results-container__temp > p {

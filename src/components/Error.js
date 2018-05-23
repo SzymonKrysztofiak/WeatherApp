@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Error = props => (
     <div className="result-container__error">
@@ -9,5 +10,9 @@ const Error = props => (
         )}
     </div>
 );
+
+Error.propTypes = {
+    errorMessage: PropTypes.string
+};
 
 export default Error;
