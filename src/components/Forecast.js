@@ -22,19 +22,19 @@ class Forecast extends React.Component {
             day[obj.day].description.push(obj.description);
             return day;
         }, {});
-        console.log(output);
         return (
             <ul className="list">
-                {Object.entries(output).map(([day, data], i) => (
-                    <li key={i}>
+                {Object.entries(output).map(([day, data]) => (
+                    <li key={day} className="list-item">
                         <h2>{day}</h2>
-                        <ul>
+                        <ul className="details-list">
                             {data.time.map((x, i) => (
-                                <li key={i}>
-                                    {x}
-                                    {data.temperature[i]}
-                                    {data.description[i]}
-                                </li>
+                                <ForecastItem
+                                    key={i}
+                                    time={x}
+                                    temperature={data.temperature[i]}
+                                    description={data.description[i]}
+                                />
                             ))}
                         </ul>
                     </li>

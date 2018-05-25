@@ -1,15 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
-import moment from "moment";
 
-const ForecastItem = props => {
-    return <li className="list-item" />;
-};
-
+const ForecastItem = props => (
+    <li className="details-list__item">
+        <div>
+            <strong>{props.time}:</strong>
+        </div>
+        <div>{props.temperature}&deg;C</div>
+        <div>{props.description}</div>
+    </li>
+);
 ForecastItem.propTypes = {
-    date: PropTypes.number,
-    temp: PropTypes.number,
-    desc: PropTypes.string
+    time: PropTypes.string,
+    temperature: PropTypes.number,
+    description: PropTypes.string
 };
 
 export default ForecastItem;
