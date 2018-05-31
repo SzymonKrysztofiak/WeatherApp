@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<React.Fragment>
+  <div
+    className="bg-container"
+  />
+  <div
+    className="flex-container"
+  >
+    <Titles />
+    <Form
+      addCoordsToState={[Function]}
+      addError={[Function]}
+      toggleLoader={[Function]}
+    />
+    <Weather
+      forecast={Array []}
+      isLoaded={true}
+    />
+    <Footer />
+  </div>
+</React.Fragment>
+`;

@@ -4,7 +4,10 @@
     "private": true,
     "homepage": "https://szymonkrysztofiak.github.io/WeatherApp/",
     "dependencies": {
+        "enzyme": "^3.3.0",
+        "enzyme-adapter-react-16": "^1.1.1",
         "gh-pages": "^1.1.0",
+        "jest-enzyme": "^6.0.1",
         "moment": "^2.22.1",
         "prop-types": "^15.6.1",
         "react": "^16.3.2",
