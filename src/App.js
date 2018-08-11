@@ -77,7 +77,6 @@ class App extends React.Component {
     this.toggleLoader()
   }
 
-  // Nowy bajer do opierdolenia
   forecastState = () => {
     fetch(
       `https://api.openweathermap.org/data/2.5/forecast?lat=${
